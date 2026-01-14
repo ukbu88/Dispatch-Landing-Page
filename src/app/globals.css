@@ -64,3 +64,17 @@ body {
 .animate-scroll {
   animation: scroll 40s linear infinite;
 }
+
+.animate-aurora {
+  animation: aurora 10s linear infinite;
+}
+
+@keyframes aurora {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}

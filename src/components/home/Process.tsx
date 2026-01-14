@@ -1,6 +1,9 @@
+"use client";
+
 import { Section } from '@/components/ui/Section';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { StaggerContainer, StaggerItem, fadeInVariants } from '@/components/ui/Stagger';
+import { motion } from 'framer-motion';
 
 const steps = [
     {
@@ -35,9 +38,28 @@ export function Process() {
 
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 {steps.map((step) => (
-                    <StaggerItem key={step.number} variants={fadeInVariants} className="relative">
-                        <div className="text-5xl font-bold text-slate-200 mb-4">{step.number}</div>
-                        <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                    <StaggerItem key={step.number} variants={fadeInVariants} className="relative group">
+                        <motion.div
+                            initial={{ opacity: 0.5 }}
+                            whileInView={{ opacity: 1 }}
+                            className="text-5xl font-bold text-slate-200 mb-4 relative"
+                        >
+                            {step.number}
+                            <motion.div
+                                className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent -skew-x-12"
+                                animate={{
+                                    x: ['-100%', '200%'],
+                                }}
+                                transition={{
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                    repeatDelay: 2
+                                }}
+                                style={{ pointerEvents: 'none' }}
+                            />
+                        </motion.div>
+                        <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">{step.title}</h3>
                         <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
                     </StaggerItem>
                 ))}

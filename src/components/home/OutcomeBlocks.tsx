@@ -1,8 +1,11 @@
+"use client";
+
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Section } from '@/components/ui/Section';
 import { StaggerContainer, StaggerItem, fadeInVariants } from '@/components/ui/Stagger';
 import { SpotlightCard } from '@/components/ui/SpotlightCard';
 import { Phone, FileText, CalendarCheck } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const outcomes = [
     {
@@ -31,13 +34,17 @@ export function OutcomeBlocks() {
                         key={item.title}
                         variants={fadeInVariants}
                         whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                        className="group"
                     >
-                        <SpotlightCard className="h-full border-none shadow-sm hover:shadow-lg">
+                        <SpotlightCard className="h-full border-none shadow-sm hover:shadow-xl transition-all duration-300 hover:bg-white/80 backdrop-blur-sm">
                             <CardHeader>
-                                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                                <motion.div
+                                    whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+                                    className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 transition-colors group-hover:bg-primary/20"
+                                >
                                     <item.icon className="w-6 h-6 text-primary" />
-                                </div>
-                                <CardTitle>{item.title}</CardTitle>
+                                </motion.div>
+                                <CardTitle className="group-hover:text-primary transition-colors">{item.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <p className="text-muted-foreground">{item.description}</p>

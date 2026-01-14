@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { Section } from '@/components/ui/Section';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const faqs = [
     {
@@ -35,28 +36,38 @@ export function FAQ() {
 
             <div className="space-y-4">
                 {faqs.map((faq, index) => (
-                    <div key={index} className="border border-border rounded-lg bg-card overflow-hidden">
+                    <div key={index} className="border border-border rounded-xl bg-card overflow-hidden transition-all duration-200 hover:border-primary/30">
                         <button
                             onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                            className="flex items-center justify-between w-full p-4 text-left font-medium text-foreground hover:bg-slate-50 transition-colors"
+                            className="flex items-center justify-between w-full p-5 text-left font-semibold text-foreground hover:bg-slate-50/50 transition-colors"
                         >
-                            {faq.question}
-                            {openIndex === index ? (
-                                <ChevronUp className="w-5 h-5 text-muted-foreground" />
-                            ) : (
+                            <span className="pr-8">{faq.question}</span>
+                            <motion.div
+                                animate={{ rotate: openIndex === index ? 180 : 0 }}
+                                transition={{ duration: 0.2 }}
+                            >
                                 <ChevronDown className="w-5 h-5 text-muted-foreground" />
-                            )}
+                            </motion.div>
                         </button>
-                        <div
-                            className={cn(
-                                "overflow-hidden transition-all duration-200 ease-in-out",
-                                openIndex === index ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                        <AnimatePresence initial={false}>
+                            {openIndex === index && (
+                                <motion.div
+                                    key="content"
+                                    initial="collapsed"
+                                    animate="open"
+                                    exit="collapsed"
+                                    variants={{
+                                        open: { opacity: 1, height: "auto" },
+                                        collapsed: { opacity: 0, height: 0 }
+                                    }}
+                                    transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
+                                >
+                                    <div className="p-5 pt-0 text-muted-foreground text-sm leading-relaxed border-t border-border/50 bg-slate-50/30">
+                                        {faq.answer}
+                                    </div>
+                                </motion.div>
                             )}
-                        >
-                            <div className="p-4 pt-0 text-muted-foreground text-sm leading-relaxed border-t border-border/50 bg-slate-50/50">
-                                {faq.answer}
-                            </div>
-                        </div>
+                        </AnimatePresence>
                     </div>
                 ))}
             </div>

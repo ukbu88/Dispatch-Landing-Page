@@ -47,13 +47,13 @@ export const StickyScroll = ({
 
     return (
         <motion.div
-            className="h-[30rem] overflow-y-auto no-scrollbar flex justify-center relative space-x-10 rounded-md p-10"
+            className="flex flex-col lg:flex-row justify-center relative space-x-0 lg:space-x-10 rounded-md p-10"
             ref={ref}
         >
             <div className="div relative flex items-start px-4">
                 <div className="max-w-2xl">
                     {content.map((item, index) => (
-                        <div key={item.title + index} className="my-20">
+                        <div key={item.title + index} className="my-20 min-h-[50vh] flex flex-col justify-center">
                             <motion.h2
                                 initial={{
                                     opacity: 0,
@@ -83,7 +83,7 @@ export const StickyScroll = ({
             </div>
             <div
                 className={cn(
-                    "hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden",
+                    "hidden lg:block h-60 w-80 rounded-md bg-white sticky top-40 overflow-hidden shadow-xl",
                     contentClassName
                 )}
             >

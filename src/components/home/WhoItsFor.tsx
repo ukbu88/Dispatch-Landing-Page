@@ -1,5 +1,6 @@
 import { Section } from '@/components/ui/Section';
-import { Hammer, Briefcase, CheckCircle2 } from 'lucide-react';
+import { Hammer, Briefcase, CheckCircle2, Zap, Truck, Home, Sparkles, Dog, Bug } from 'lucide-react';
+import { BentoGrid, BentoGridItem } from '@/components/ui/BentoGrid';
 
 export function WhoItsFor() {
     return (
@@ -9,43 +10,59 @@ export function WhoItsFor() {
                 <p className="mt-4 text-lg text-muted-foreground">Tailored for trades and service providers who need results, not fluff.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-                {/* Trades */}
-                <div className="space-y-6">
-                    <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center">
-                            <Hammer className="w-5 h-5 text-slate-700" />
+            <BentoGrid className="max-w-4xl mx-auto">
+                {/* Visual Header for Trades */}
+                <BentoGridItem
+                    title="For Trades"
+                    description="Essential services that keep homes running."
+                    header={
+                        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 items-center justify-center">
+                            <Hammer className="w-12 h-12 text-blue-600" />
                         </div>
-                        <h3 className="text-xl font-semibold">For Trades</h3>
-                    </div>
-                    <ul className="space-y-3">
-                        {['Plumbing & Gas', 'Electrical', 'HVAC & Air Con', 'Landscaping', 'Construction'].map((item) => (
-                            <li key={item} className="flex items-center gap-3 text-muted-foreground">
-                                <CheckCircle2 className="w-4 h-4 text-primary" />
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                    }
+                    className="md:col-span-1"
+                />
 
-                {/* Services */}
-                <div className="space-y-6">
-                    <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center">
-                            <Briefcase className="w-5 h-5 text-slate-700" />
+                {/* Trade Items */}
+                <BentoGridItem
+                    title="Plumbing & Electrical"
+                    description="Emergency repairs & installations."
+                    icon={<Zap className="h-4 w-4 text-neutral-500" />}
+                    className="md:col-span-1"
+                />
+                <BentoGridItem
+                    title="Construction & HVAC"
+                    description="Building & climate control."
+                    icon={<Home className="h-4 w-4 text-neutral-500" />}
+                    className="md:col-span-1"
+                />
+
+                {/* Visual Header for Services */}
+                <BentoGridItem
+                    title="For Services"
+                    description="Personal & professional care."
+                    header={
+                        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 items-center justify-center">
+                            <Briefcase className="w-12 h-12 text-purple-600" />
                         </div>
-                        <h3 className="text-xl font-semibold">For Services</h3>
-                    </div>
-                    <ul className="space-y-3">
-                        {['Cleaning Services', 'Dog Grooming', 'Auto Detailing', 'Pest Control', 'Removalists'].map((item) => (
-                            <li key={item} className="flex items-center gap-3 text-muted-foreground">
-                                <CheckCircle2 className="w-4 h-4 text-primary" />
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
+                    }
+                    className="md:col-span-1"
+                />
+
+                {/* Service Items */}
+                <BentoGridItem
+                    title="Cleaning & Pest Control"
+                    description="Keeping spaces pristine."
+                    icon={<Sparkles className="h-4 w-4 text-neutral-500" />}
+                    className="md:col-span-1"
+                />
+                <BentoGridItem
+                    title="Pet Services"
+                    description="Grooming & mobile vet care."
+                    icon={<Dog className="h-4 w-4 text-neutral-500" />}
+                    className="md:col-span-1"
+                />
+            </BentoGrid>
         </Section>
     );
 }
