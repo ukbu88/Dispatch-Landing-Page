@@ -22,7 +22,7 @@ export const AuroraBackground = ({
     return (
         <div
             className={cn(
-                "relative flex flex-col  h-[100vh] items-center justify-center bg-slate-50 dark:bg-slate-900  text-slate-950 transition-bg",
+                "relative flex flex-col min-h-screen h-[100dvh] items-center justify-center bg-slate-50 dark:bg-slate-900 text-slate-950 transition-bg",
                 className
             )}
             {...props}
@@ -45,10 +45,10 @@ export const AuroraBackground = ({
                         `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
                     )}
                 ></div>
-                {/* Fallback/Boost layer with inline animation style for guaranteed movement */}
+                {/* Fallback/Boost layer - reduced opacity on mobile */}
                 {mounted && (
                     <div
-                        className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] opacity-50 blur-[100px] -z-10 animate-aurora"
+                        className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] opacity-30 md:opacity-50 blur-[100px] -z-10 animate-aurora"
                         style={{
                             background: 'conic-gradient(from 0deg at 50% 50%, #60a5fa 0deg, #e879f9 70deg, #a78bfa 180deg, #60a5fa 360deg)',
                             animationDuration: '10s'

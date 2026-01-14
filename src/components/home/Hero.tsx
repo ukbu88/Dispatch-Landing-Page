@@ -10,11 +10,11 @@ export function Hero() {
     return (
         <AuroraBackground>
             <div className="relative flex flex-col items-center justify-center min-h-[80vh] px-4">
-                <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+                <div className="max-w-4xl mx-auto text-center space-y-4 md:space-y-8 relative z-10">
                     <FadeIn delay={0.1} direction="down">
-                        <div className="flex flex-wrap justify-center gap-2 mb-6">
+                        <div className="flex flex-wrap justify-center gap-2 mb-2 md:mb-6">
                             {["Mobile-first", "SEO-ready", "Google Business setup"].map((chip) => (
-                                <span key={chip} className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full border border-primary/20 backdrop-blur-sm">
+                                <span key={chip} className="px-3 py-1 text-[10px] md:text-xs font-medium text-primary bg-primary/10 rounded-full border border-primary/20 backdrop-blur-sm">
                                     {chip}
                                 </span>
                             ))}
@@ -22,13 +22,13 @@ export function Hero() {
                     </FadeIn>
 
                     <FadeIn delay={0.2}>
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground">
+                        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-tight px-2">
                             Fast, conversion-focused websites for <span className="text-primary">local services and trades</span>.
                         </h1>
                     </FadeIn>
 
                     <FadeIn delay={0.3}>
-                        <div className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed flex flex-col items-center justify-center">
+                        <div className="text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed flex flex-col items-center justify-center px-4">
                             <TextGenerateEffect
                                 words="Premium sites dispatched in days—built to generate calls and quote requests."
                                 className="text-center font-normal"

@@ -53,7 +53,12 @@ export const StickyScroll = ({
             <div className="div relative flex items-start px-4">
                 <div className="max-w-2xl">
                     {content.map((item, index) => (
-                        <div key={item.title + index} className="my-20 min-h-[50vh] flex flex-col justify-center">
+                        <div key={item.title + index} className="my-12 md:my-20 min-h-[auto] lg:min-h-[50vh] flex flex-col justify-center">
+                            {/* Mobile Icon */}
+                            <div className="lg:hidden w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
+                                <item.icon className="w-6 h-6 text-primary" />
+                            </div>
+
                             <motion.h2
                                 initial={{
                                     opacity: 0,
@@ -61,6 +66,7 @@ export const StickyScroll = ({
                                 animate={{
                                     opacity: activeCard === index ? 1 : 0.3,
                                 }}
+                                transition={{ duration: 0.5 }}
                                 className="text-2xl font-bold text-slate-900"
                             >
                                 {item.title}
@@ -72,13 +78,14 @@ export const StickyScroll = ({
                                 animate={{
                                     opacity: activeCard === index ? 1 : 0.3,
                                 }}
-                                className="text-lg text-slate-600 max-w-sm mt-10"
+                                transition={{ duration: 0.5 }}
+                                className="text-lg text-slate-600 max-w-sm mt-4 md:mt-10"
                             >
                                 {item.description}
                             </motion.p>
                         </div>
                     ))}
-                    <div className="h-40" />
+                    <div className="h-20 lg:h-40" />
                 </div>
             </div>
             <div
