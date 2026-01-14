@@ -1,6 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Section } from '@/components/ui/Section';
 import { StaggerContainer, StaggerItem, fadeInVariants } from '@/components/ui/Stagger';
+import { SpotlightCard } from '@/components/ui/SpotlightCard';
 import { Phone, FileText, CalendarCheck } from 'lucide-react';
 
 const outcomes = [
@@ -31,7 +32,7 @@ export function OutcomeBlocks() {
                         variants={fadeInVariants}
                         whileHover={{ y: -5, transition: { duration: 0.2 } }}
                     >
-                        <Card className="bg-background border-none shadow-sm hover:shadow-lg transition-all h-full">
+                        <SpotlightCard className="h-full border-none shadow-sm hover:shadow-lg">
                             <CardHeader>
                                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                                     <item.icon className="w-6 h-6 text-primary" />
@@ -41,7 +42,7 @@ export function OutcomeBlocks() {
                             <CardContent>
                                 <p className="text-muted-foreground">{item.description}</p>
                             </CardContent>
-                        </Card>
+                        </SpotlightCard>
                     </StaggerItem>
                 ))}
             </StaggerContainer>

@@ -1,12 +1,29 @@
+"use client";
+
 import { Button } from '@/components/ui/Button';
 import { Section } from '@/components/ui/Section';
 import { FadeIn } from '@/components/ui/FadeIn';
+import { TextRotator } from '@/components/ui/TextRotator';
+import { motion } from 'framer-motion';
+import { GridPattern } from '@/components/ui/GridPattern';
 
 export function Hero() {
     return (
         <Section className="py-20 md:py-32 lg:py-40 relative overflow-hidden">
             {/* Background Gradient Blob */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10 opacity-50 pointer-events-none" />
+            <motion.div
+                animate={{
+                    scale: [1, 1.1, 1],
+                    rotate: [0, 5, -5, 0],
+                    opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/20 rounded-full blur-[100px] -z-10 pointer-events-none"
+            />
 
             <div className="max-w-4xl mx-auto text-center space-y-8">
                 <FadeIn delay={0.1} direction="down">
@@ -26,9 +43,17 @@ export function Hero() {
                 </FadeIn>
 
                 <FadeIn delay={0.3}>
-                    <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                        Premium sites dispatched in days—built to generate calls and quote requests.
-                    </p>
+                    <div className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed flex flex-col items-center justify-center h-20 md:h-24">
+                        <TextRotator
+                            texts={[
+                                "Premium sites dispatched in days—built to generate calls and quote requests.",
+                                "Stop losing leads to competitors with outdated websites.",
+                                "Your digital shopfront, open 24/7 and ready to take bookings."
+                            ]}
+                            interval={5000}
+                            className="text-center w-full"
+                        />
+                    </div>
                 </FadeIn>
 
                 <FadeIn delay={0.4}>

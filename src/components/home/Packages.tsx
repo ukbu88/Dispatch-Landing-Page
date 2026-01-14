@@ -1,8 +1,10 @@
 import { Button } from '@/components/ui/Button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
+import { CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Section } from '@/components/ui/Section';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { StaggerContainer, StaggerItem, fadeInVariants } from '@/components/ui/Stagger';
+import { SpotlightCard } from '@/components/ui/SpotlightCard';
+import { BorderBeam } from '@/components/ui/BorderBeam';
 import { Check } from 'lucide-react';
 
 const packages = [
@@ -42,11 +44,14 @@ export function Packages() {
                         variants={fadeInVariants}
                         whileHover={{ y: -8, transition: { duration: 0.2 } }}
                     >
-                        <Card className={`flex flex-col h-full transition-all duration-300 ${pkg.popular ? 'border-primary shadow-lg ring-1 ring-primary' : 'hover:border-primary/50 hover:shadow-md'}`}>
+                        <SpotlightCard className={`flex flex-col h-full ${pkg.popular ? 'border-primary shadow-lg ring-1 ring-primary relative overflow-hidden' : 'hover:border-primary/50 hover:shadow-md'}`}>
                             {pkg.popular && (
-                                <div className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-t-lg absolute -mt-8 top-0 mx-auto w-full text-center max-w-[100px] left-0 right-0">
-                                    POPULAR
-                                </div>
+                                <>
+                                    <div className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-t-lg absolute -mt-8 top-0 mx-auto w-full text-center max-w-[100px] left-0 right-0 z-10">
+                                        POPULAR
+                                    </div>
+                                    <BorderBeam duration={8} size={100} colorFrom="#2563EB" colorTo="#38bdf8" />
+                                </>
                             )}
                             <CardHeader>
                                 <CardTitle className="text-xl">{pkg.name}</CardTitle>
@@ -71,7 +76,7 @@ export function Packages() {
                                     Get Started
                                 </Button>
                             </CardFooter>
-                        </Card>
+                        </SpotlightCard>
                     </StaggerItem>
                 ))}
             </StaggerContainer>
